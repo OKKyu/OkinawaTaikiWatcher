@@ -1,0 +1,15 @@
+{% extends 'template_top.html' %}
+{% block main %}
+  <main id="common_message">
+    <section>
+      <h1>{{ msg.subject }}</h1>
+      <fieldset>
+        <p>{{ msg.message1 }}</p>
+        <p>{{ msg.message2 }}</p>
+      </fieldset>
+      <fieldset class="linkrow">
+        <a href="{% url 'login' %}">ログイン画面</a>
+      </fieldset>
+    </section>
+  </main>
+{% endblock %}

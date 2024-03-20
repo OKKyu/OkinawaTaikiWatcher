@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Kiwamu Nakasone"/>
+    <meta name="description" content="沖縄大気常時監視システムの結果を取得しLINE-NOTIFYへ送信するシステムの管理画面です">
+    <meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+    <!--<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">-->
+    <title>沖縄大気汚染のアラートシステム</title>
+    <!--<base href="http://localhost:8000">-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/sanitize.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/common.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/common_message.css'  %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/login.css'  %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/topview.css'  %}" type="text/css"/>
+  </head>
+  <body>
+      <header>
+          {% if user.is_authenticated %}
+          <nav>
+            <ul>
+              <li id="logout"><a  href="{% url 'logout' %}">ログアウト</a></li>
+              <li id="user_name"><a >{{ user.username }}</a></li>
+            </ul>
+          </nav>
+          {% endif %}
+      </header>
+      
+      {% block main %}
+      {% endblock %}
+      
+      <footer>
+        <p class="copyright">Copyright by 沖縄県環境科学センター</p>
+      </footer>
+  </body>
+</html>

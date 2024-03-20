@@ -1,0 +1,16 @@
+PythonでLINEへメッセージを通知する方法を調査した。
+以下３つのサービスが提供されていた。
+
+・LINE Notify
+　https://qiita.com/moriita/items/5b199ac6b14ceaa4f7c9
+　https://notify-bot.line.me/ja/
+
+・LINE Messaging API
+　https://developers.line.biz/ja/docs/messaging-api/overview/#line-official-account-plan
+
+・LINE for Business 通数と料金
+　https://www.linebiz.com/jp/service/line-official-account/plan/
+
+
+今回の案件ではLINE Notifyで決定した。
+

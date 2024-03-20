@@ -1,0 +1,39 @@
+/* charset utf-8 */
+
+/******************************* basic setting *************************************/
+#common_message h1 {
+  font-size: 46px;
+  text-shadow: 1px 1px 2px #dfdfdf;
+  text-align:center;
+  width:100%;
+}
+#common_message section{
+  width:100%;
+  padding: 5% 10%;
+}
+#common_message fieldset{
+  border:0px;
+  font-size:24px;
+  padding:0 20%;
+}
+#common_message p{}
+
+#common_message .linkrow{
+  border:0px;
+  text-align:center;
+}
+
+/******************************* mobile ********************************************/
+@media all and (max-width: 480px){
+
+}
+
+/******************************* tablet ********************************************/
+@media all and (min-width: 481px) and (max-width: 1023px){
+
+}
+
+/******************************* pc ********************************************/
+@media all and (min-width: 1024px) {
+
+}

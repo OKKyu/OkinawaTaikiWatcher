@@ -1,0 +1,20 @@
+{% extends 'template_top.html' %}
+{% block main %}
+      <main id="main_login">
+        <form action="authentication" method="post">
+          {% csrf_token %}
+          <section class="label_login">
+            ログイン
+          </section>
+          <fieldset>
+            <label>ID:</label>
+            <input type="text" name="login_id" value="" class="text_box"/>
+          </fieldset>
+          <fieldset>
+            <label>PW:</label>
+            <input type="password" name="login_pw" value="" class="text_box"/>
+          </fieldset>
+          <input type="submit" value="login" class="button_box"/>
+        </form>
+      </main>
+{% endblock %}

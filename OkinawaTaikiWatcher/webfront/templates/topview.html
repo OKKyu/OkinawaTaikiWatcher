@@ -1,0 +1,58 @@
+{% extends 'template_top.html' %}
+{% block main %}
+    <main id="main_topview">
+      <form action="{% url 'update_infos' %}" method="post">
+        {% csrf_token %}
+        <fieldset id="toggle_running">
+          <legend>LINE通知ON/OFF 状態</legend>
+          <span class="flex-item">
+            <input id="running_on"  type="radio" name="toggle_running" value="True"  {% if run_flg == True %}checked{% endif %}>実行中</input>
+          </span>
+          <span class="flex-item">
+            <input id="running_off" type="radio" name="toggle_running" value="False" {% if run_flg == False %}checked{% endif %}>停止</input>
+          </span>
+        </fieldset>
+        
+        <fieldset id="field_criterias">
+          <legend>しきい値設定</legend>
+          <!--header-->
+          <div id="cri_header" class="row">
+            <label>物質名</label>
+            <label>現在値</label>
+            <label>変更値入力</label>
+          </div>
+          
+          <!--data-->
+          {% for key, val in criterias.items %}
+            <div id="cri_{{ key }}" class="row">
+              <label>{{ key }}</label>
+              <label>{{ val }}</label>
+              <input type="text" id="cri_alterval_{{ key }}" name="alterval_{{ key }}" value="" placeholder="変更したい場合はここに入力"></input>
+            </div>
+          {% endfor %}
+        </fieldset>
+        
+        <fieldset id="field_kyokus">
+          <legend>通知対象測定局</legend>
+          <!--header-->
+          <div id="kyoku_header">
+            <label>測定局名</label>
+            <label>通知する</label>
+            <label>通知しない</label>
+          </div>
+        
+          <!--data-->
+          {% for key, val in kyokus.items %}
+            <div id="kyoku_{{ key }}" class="row">
+              <label>{{ key }}</label>
+              <input type="radio" id="kyoku_alert_on_{{ key }}" name="kyoku_alert_{{ key }}" value="True" {% if val == True %}checked{% endif %}>ON</input>
+              <input type="radio" id="kyoku_alert_off_{{ key }}" name="kyoku_alert_{{ key }}" value="False" {% if val == False %}checked{% endif %}>OFF</input>
+            </div>
+          {% endfor %}
+        </fieldset>
+        
+        <input type="submit" class="button_box" value="更新" ></input>
+      </form>
+    </main>
+    
+{% endblock %}

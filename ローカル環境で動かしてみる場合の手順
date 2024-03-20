@@ -1,0 +1,14 @@
+ローカル環境で動かしたい場合、以下手順で動かせます（Linuxのみ）。
+
+１）OkinawaTaikiWatcherフォルダごとクライアント機の好きな場所へコピー
+２）OkinawaTaikiWatcherフォルダに入り、setup.shを実行する。
+　　シェル端末上で
+     bash setup.sh
+３）管理画面を起動する場合はrun_django.shを実行する。
+４）情報収集と通知を行う場合はscrape.shを実行する。
+   ただしLine Notifyから通知を受け取るにはアクセストークンの設定などが必要です。
+　以下の手順を行い、環境変数LINE_NOTIFY_ACCESS_TOKENにアクセストークンを入れて下さい。
+　・LINE Notify
+　　https://qiita.com/moriita/items/5b199ac6b14ceaa4f7c9
+　　https://notify-bot.line.me/ja/
+

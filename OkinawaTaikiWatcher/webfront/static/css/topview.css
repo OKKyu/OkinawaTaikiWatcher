@@ -1,0 +1,128 @@
+/* charcode:utf-8 */
+/* basic setting に共通設定を書く。あとはモバイル、タブレット、PCごとに調整が必要であれば各メディアクエリ内で上書きする。 */
+
+/******************************* basic setting *************************************/
+#main_topview form {
+  width:100%;
+}
+
+#main_topview fieldset{
+  display:flex;
+  padding:1em;
+  width:100%;
+  justify-content:space-around;
+}
+
+#main_topview #toggle_running{
+  flex-direction:row;
+}
+
+#main_topview #toggle_running .flex-item{
+  flex-basis: 20%;
+}
+
+#main_topview #toggle_running .flex-item input{
+  margin-right:10px;
+}
+
+
+#main_topview #field_criterias,
+#main_topview #field_kyokus{
+  flex-direction:column;
+}
+
+#main_topview #field_criterias .row,
+#main_topview #field_kyokus .row{
+  display:flex;
+  margin-bottom: 2%;
+  flex-direction:row;
+  justify-content:space-around;
+  text-align:center;
+}
+
+#main_topview #field_criterias .row label,
+#main_topview #field_criterias .row input,
+#main_topview #field_kyokus .row label,
+#main_topview #field_kyokus .row input{
+  flex-basis:30%;
+  flex-grow: 0;
+}
+
+#main_topview .button_box{
+  padding:1em 3em;
+  margin-left:70%;
+  margin-top:1em;
+}
+
+/******************************* mobile ********************************************/
+@media all and (max-width: 480px){
+  #main_topview form {
+    padding:3% 5%;
+    margin:auto;
+  }
+
+  #main_topview .button_box{
+    padding:10px 2em;
+    margin-left:64%;
+  }
+  
+  #main_topview #field_criterias .row,
+  #main_topview #field_kyokus .row{
+    display:block;
+  }
+  #main_topview #field_criterias .row label
+  #main_topview #field_kyokus .row label{
+    width:50%;
+    margin-left:10px;
+  }
+  #main_topview #field_criterias .row input
+  #main_topview #field_kyokus .row input{
+    width:30%;
+    margin-left:10px;
+  }
+  
+}
+
+/******************************* tablet ********************************************/
+@media all and (min-width: 481px) and (max-width: 1023px){
+
+  #main_topview form {
+    padding:10%;
+    width:100%;
+  }
+  
+  #main_topview #running_off{
+    margin-left: 15%;
+  }
+  
+  #main_topview .button_box{
+    padding:1em 3em;
+    margin-left:80%;
+  }
+}
+
+/******************************* desktop pc ****************************************/
+@media all and (min-width: 1024px){
+  #main_topview form {
+    padding:3% 30%;
+    width:100%;
+  }
+  
+  #main_topview #running_off{
+    margin-left: 15%;
+  }
+  
+  #main_topview .button_box{
+    padding:1em 3em;
+    margin-left:80%;
+  }
+  
+  #main_topview #field_criterias .row label,
+  #main_topview #field_criterias .row input,
+  #main_topview #field_kyokus .row label,
+  #main_topview #field_kyokus .row input{
+    flex-basis:30%;
+    flex-grow: 0;
+  }
+  
+}

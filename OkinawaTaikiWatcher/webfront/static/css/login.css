@@ -1,0 +1,75 @@
+/* charcode:utf-8 */
+/* basic setting に共通設定を書く。あとはモバイル、タブレット、PCごとに調整が必要であれば各メディアクエリ内で上書きする。 */
+
+/******************************* basic setting *************************************/
+#main_login .label_login{
+  text-align:center;
+}
+#main_login .text_box{
+  min-width:20%;
+  max-width:50%;
+}
+#main_login .button_box{
+  padding:1em 3em;
+  margin-left:70%;
+}
+#main_login #logout{
+  
+}
+
+#main_login form {}
+
+#main_login fieldset{
+  width:100%;
+  margin: 0 0 1% 0;
+  padding: 0.45em 0.2em;
+}
+#main_login label{
+  width:10%;
+}
+
+
+
+/******************************* mobile ********************************************/
+@media all and (max-width: 480px){
+  #main_login .button_box{
+    margin-left:70%;
+    padding:10px  22px;
+  }
+  #main_login .label_login{
+    font-size: 24px;
+  }
+  #main_login form {
+    padding:10% 5%;
+  }
+}
+
+/******************************* tablet ********************************************/
+@media all and (min-width: 481px) and (max-width: 1023px){
+  #main_login .button_box{
+    margin-left:72%;
+  }
+  #main_login .label_login{
+    font-size: 36px;
+    font-weight: bold;
+    font-family: italic;
+  }
+  #main_login form {
+    padding:10% 15%;
+  }
+}
+
+/******************************* desktop pc ****************************************/
+@media all and (min-width: 1024px){
+  #main_login .button_box{
+    margin-left:76%;
+  }
+  #main_login .label_login{
+    font-size: 52px;
+    font-weight: bold;
+    font-family: italic;
+  }
+  #main_login form {
+    padding:10% 30%;
+  }
+}

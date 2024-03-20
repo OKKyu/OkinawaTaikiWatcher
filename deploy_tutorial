@@ -1,0 +1,68 @@
+pythonanywhereへDjangoをデプロイする手順
+
+前提条件：
+　既にアカウントは開設済みであること
+
+1)ファイルのアップロード
+　リポジトリをgithubにアップロードしておくとgit cloneを実行するだけで済むので簡単。
+　そうでない場合は"Files"画面から１ファイルずつアップロードすることになる。
+　リポジトリを丸ごとtar.gzに圧縮し、pythonanywhere上のbash consoleで解凍するとよい。
+
+２）ファイルの配置
+　/home/ユーザーフォルダ 直下にアプリを配置する。
+  無料アカウントの場合は既に ユーザー名.pythonanywhere.com という名前のフォルダがあり、その配下が
+  Djangoアプリの配置場所となっている。ここの直下にmanage.pyと各appのフォルダを置く。
+
+  /home/ユーザー名
+       |--admin
+       |--app
+       |--manage.py
+
+　
+３）Web設定
+　"Web"画面で各種設定を行う。
+　　　Source code:Django本体の格納場所を指定する
+　　　WSGI configuration file:
+        wsgi.pyの格納場所を指定する。通常であればデフォルトの/var/www/ 配下のままでよい。
+　　　　　ApacheかNginxかは不明だが、WebサーバーとDjangoをリンクさせる箇所になる。
+　　　　　また、wsgi.pyに以下２行も追加する。
+　　　　　　　import os
+　　　　　　　import sys
+
+　　　　　　　# Add your project directory to the sys.path
+　　　　　　　settings_path = '/home/OKKyu/okkyu.pythonanywhere.com'
+　　　　　　　sys.path.insert(0, settings_path)
+
+　　　Virtualenv:
+　　　　　venv環境の場所を指定する。デフォルトではユーザーホーム直下に.virtualenvフォルダを作り、更にその下に
+        ユーザー名.pythonanywhere.com という名前のフォルダを用意する。
+         .virtualenv直下にはpreactivateとかpostactivateといったファイルが自動生成されている。これらがデプロイ有効
+　　　　　化時に起動していると思われる。
+
+　　　Static files:
+　　　　  静的ファイルの格納場所を指定する。公開ディレクトリは/var/www なのでその下に配置するとよい。
+        また、Django側では
+
+４）admin/settings.pyの修正
+  ・allow_hostsにデプロイ先のドメイン名を入れておくこと。無料アカウントの場合は　ユーザー名.pythonanywhere.com　にする。
+　・static_root にWeb設定で指定したstatic filesのパスを指定する。
+
+５）python manage.py collectstatic　をコンソールで実行する。
+  static fileパスの配下に静的ファイルが自動でまとめられる。これをやっておかないとadminのcssが公開ディレクトリに
+　配置されずレイアウト崩壊が起きてしまう。
+
+６）環境変数の設定
+  .bashrc 辺りに必要な環境変数を登録しておく。LINE-Notifyのaccess tokenなどはここに登録すること。
+
+
+その他
+詰んだかも・・・pythonanywhereは公式APIドキュメントのないサイトをホワイトリストに入れていないとのこと。
+pythonanywhereからrequestsでスクレイピングできない恐れあり。
+https://www.pythonanywhere.com/forums/topic/31531/
+→有料のサブスクリプションに切り替えたら送受信可能になった。良かった良かった
+
+支払い方法について  paypalかクレジットカードが使える。クレカはMasterCardやVisaが使える。
+https://www.pythonanywhere.com/forums/topic/1552/
+
+
+

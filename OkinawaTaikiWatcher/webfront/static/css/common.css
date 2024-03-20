@@ -1,0 +1,131 @@
+/* charcode:utf-8 */
+/* basic setting に共通設定を書く。あとはモバイル、タブレット、PCごとに調整が必要であれば各メディアクエリ内で上書きする。 */
+
+/******************************* basic setting *************************************/
+/*** frame layout ***/
+html {
+  height:100%;
+  width:100%;
+  padding:0;
+}
+body {
+  height:100%;
+  width:100%;
+  padding:0;
+  position:static;
+}
+
+header {
+  z-index:1;
+  position:fixed;
+  background-color: #cbfffa;
+  border: 2px solid #ade3de;
+  width:100%;
+}
+header nav {
+  position:relative;
+  height:100%;
+}
+header nav ul{
+  margin:0;
+  display: flex;
+  flex-direction: row-reverse;
+}
+header nav li{
+  border:2px solid #79b9cc;
+  flex-wrap: wrap;
+  text-align:center;
+  background-color:#c8f2ff;
+}
+header nav li[disabled]{
+  display:none;
+}
+
+main {
+  z-index:0;
+  padding:20px 2px;
+  position:relative;
+  width: 100%;
+}
+
+footer{
+  z-index:1;
+  width:100%;
+  background-color: #ade3de;
+  border-top: 1px solid #61aaa3;
+  position: fixed;
+  bottom:0px;
+}
+
+/*** text positioning ***/
+.copyright{
+  text-align:center;
+}
+
+
+/******************************* mobile *************************************/
+@media all and (max-width: 480px){
+  /***  frame layout  ***/
+  header {
+    margin-top:-10%;
+  }
+  header nav li{
+    padding:4px 8px;
+  }
+  
+  main{
+    margin-top:10%;
+    padding:8px 0;
+  }
+  
+  footer{
+    min-height: 3em;
+  }
+}
+
+/******************************* tablet *************************************/
+@media all and (min-width: 481px) and (max-width: 1023px){
+  header {
+    margin-top:-2em;
+    min-height: 2em;
+  }
+  header nav ul{
+    height:4em;
+  }
+  header nav li{
+    flex-basis: 10%;
+    padding-top:2em;
+    font-size:10px;
+  }
+  
+  main{
+    margin-top:2em;
+    padding:0 8%;
+  }
+  footer{
+    min-height: 2.0em;
+  }
+}
+
+/******************************* desktop pc *************************************/
+@media all and (min-width: 1024px){
+  header{
+    margin-top:-4em;
+    min-height: 4em;
+  }
+  header nav ul{
+    height:4em;
+  }
+  header nav li{
+    flex-basis: 10%;
+    padding-top:1em;
+  }
+
+  main{
+    margin-top:4em;
+    padding:0 8%;
+  }
+  footer{
+    min-height: 3.2em;
+  }
+}
